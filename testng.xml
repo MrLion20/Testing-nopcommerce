@@ -4,6 +4,11 @@
     <test verbose="2" preserve-order="true" name="C:/Proyectos/Commerce_Page">
         <classes>
             <class name="Login_Test">
+                <methods>
+                    <include name="Cargar_Pagina"/>
+                    <include name="Ingresar_Credenciales"/>
+                    <include name="confirmar_ingreso"/>
+                </methods>
             </class>
         </classes>
     </test>

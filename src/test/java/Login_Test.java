@@ -10,17 +10,25 @@ public class Login_Test {
 
     @BeforeSuite
     public static void main(String[] args) {
-        System.setProperty("webdriver.chrome.driver", Conexión.CHROME_DRIVER_LOCATION);
-        driver.get(Conexión.BASE_URL);
+    }
+    @Test(priority = 1)
+    public static void Cargar_Pagina() throws InterruptedException {
+        System.setProperty("webdriver.chrome.driver", Conexion.CHROME_DRIVER_LOCATION);
+        driver.get(Conexion.BASE_URL);
         System.out.println("Se abre el navegador y la URL de la prueba");
         driver.manage().window().maximize();
         System.out.println("Se Maximiza el Navegador");
     }
-    @Test()
-    public static void submitForm() throws InterruptedException {
+    @Test(priority = 2)
+    public static void Ingresar_Credenciales() throws InterruptedException {
         PageObject pageobject = new PageObject(driver);
-        System.out.println("Inicio de Login_Test");
+        System.out.println("Inicio de Ingreso de Credenciales");
         pageobject.Login();
+    }
+    @Test(priority = 2)
+    public static void confirmar_ingreso() throws InterruptedException {
+        PageObject pageobject = new PageObject(driver);
+        pageobject.confirmacion_ingreso();
     }
 
     @AfterSuite
