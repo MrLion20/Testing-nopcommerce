@@ -44,6 +44,5 @@ public class PageObject extends BasePage {
         //Precionar Boton para Confirmar Credenciales y ingresar al Sistema
         click(btn_login);
         System.out.println("Presionado correctamente Boton de Log In ");
-
     }
 }
