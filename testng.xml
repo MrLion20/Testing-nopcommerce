@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
 <suite name="All Test Suite">
+    
+<!--    Aca se van a llamar la clase de listeners para los reportes-->
+    
+    <listeners>
+        <listener class-name="Listeners">
+        </listener>
+    </listeners>
+    
+<!--    Aca se llaman los test que se van a realizar -->
     <test verbose="2" preserve-order="true" name="C:/Proyectos/Commerce_Page">
         <classes>
             <class name="Login_Test">
