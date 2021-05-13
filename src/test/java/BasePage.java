@@ -22,6 +22,11 @@ public class BasePage {
         driver.findElement(locator).click();
     }
 
+    //Accion para dar limpiar textbox
+    public void clear(By locator){
+        driver.findElement(locator).clear();
+    }
+
     //Accion para mandar texto
     public void type(String inputText, By locator){
         driver.findElement(locator).sendKeys(inputText);
