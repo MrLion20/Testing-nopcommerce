@@ -18,6 +18,7 @@ public class Login_Test {
         System.out.println("Se abre el navegador y la URL de la prueba");
         driver.manage().window().maximize();
         System.out.println("Se Maximiza el Navegador");
+
     }
     @Test(priority = 2)
     public static void Ingresar_Credenciales() throws InterruptedException {

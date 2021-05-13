@@ -25,6 +25,7 @@ public class PageObject extends BasePage {
        /* Credenciales de login:
         - Email: admin@yourstore.com
         -PassWord: admin */
+
         //Se limpian los espacios del login
         clear(txt_email);
         clear(txt_password);
