@@ -31,6 +31,7 @@ public class PageObject extends BasePage {
     By btnAddNew = By.xpath("/html/body/div[3]/div[1]/form[1]/div/div/a");
 
     //Pantalla del Formulario ADDCostumer
+    By Costumer_title = By.xpath("//*[@id=\"customer-info\"]/div[1]/div[1]/text()");
     By txt_costumer_email = By.id("Email");
     By txt_costumer_password = By.id("Password");
     By txt_costumer_FirstName = By.id("FirstName");
@@ -142,8 +143,14 @@ public class PageObject extends BasePage {
         test.pass("Se verifica y se ingresa a la pagina de Formulario de agregar Costumer");
     }
 
-    public void addinfo_Costumer(){
+    public void add_info_Costumer(){
+        ExtentTest test = extent.createTest("Prueba Agregar Informacion de Costumer");
+        test.info("Se inicia la verificacion si estamos en la pagina correcta");
+    if (isDisplayed(Costumer_title)){
 
+    }else{
+        test.fail("No estamos en la Pagina correcta para ingresar un nuevo costumer");
+    }
 
 
     }
