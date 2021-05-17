@@ -103,7 +103,7 @@ public class PageObject extends BasePage {
         test.pass("Se ingreso correctamente al Sistema");
     }
 
-    //Test AddCostumer
+    //Test Formulario AddCostumer
     public void Form_AddCostumer() {
         ExtentTest test = extent.createTest("Iniciar Prueba Ingresar a Formulario de Agregar Costumers");
 
@@ -116,7 +116,7 @@ public class PageObject extends BasePage {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         if (isDisplayed(btnAddNew)) {
             click(btnAddNew);
-            test.pass("Se Presiono el boton de agregar usuario correctamente");
+            test.pass("Se Presiono el boton de agregar usuario para abrir el formlario de manera correcta");
         } else {
             System.out.println("Boton de Agregar Cliente no disponible");
             test.fail("botton de AddCostumer no disponible");
@@ -124,4 +124,14 @@ public class PageObject extends BasePage {
         }
         test.pass("Se verifica y se ingresa a la pagina de Formulario de agregar Costumer");
     }
+
+    //Test Agregar informacion de Costumer
+
+    public void Form_Agregarinfo_Costumer(){
+
+
+
+    }
+
+
 }
