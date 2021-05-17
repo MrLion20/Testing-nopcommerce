@@ -26,7 +26,7 @@ public class AddCostumer_Test {
     @Test(priority = 2)
     public void Form_AddCostumer() throws InterruptedException {
         pageobject.Form_AddCostumer();
-        pageobject.Form_Agregarinfo_Costumer();
+        pageobject.add_info_Costumer();
     }
 
     @AfterSuite
