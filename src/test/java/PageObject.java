@@ -30,6 +30,23 @@ public class PageObject extends BasePage {
     By btnCostumersPage = By.xpath("/html/body/div[3]/aside/div/div[4]/div/div/nav/ul/li[4]/ul/li[1]/a");
     By btnAddNew = By.xpath("/html/body/div[3]/div[1]/form[1]/div/div/a");
 
+    //Pantalla del Formulario ADDCostumer
+    By txt_costumer_email = By.id("Email");
+    By txt_costumer_password = By.id("Password");
+    By txt_costumer_FirstName = By.id("FirstName");
+    By txt_costumer_LastName = By.id("LastName");
+    By RB_Male = By.id("Gender_Male");
+    By RB_Female = By.id("Gender_Female");
+    By txt_calendar = By.id("DateOfBirth");
+    By txt_company = By.id("Company");
+    By CB_tax = By.id("IsTaxExempt");
+    By select_newsletter = By.xpath("//*[@id=\"customer-info\"]/div[2]/div[9]/div[2]/div/div[1]/div");
+    By select_costumer_rol = By.xpath("//*[@id=\"customer-info\"]/div[2]/div[10]/div[2]/div/div[1]/div/div");
+    By select_vender = By.id("VendorId");
+    By CB_active = By.id("Active");
+    By txt_adminContent = By.id("AdminComment");
+    By btn_save = By.xpath("/html/body/div[3]/div[1]/form/div[1]/div/button[1]");
+
     //Implementacion de las acciones de Pruebas
     //Acciones Antes Pruebas
     public void BeforeSuit() {
@@ -123,5 +140,11 @@ public class PageObject extends BasePage {
 
         }
         test.pass("Se verifica y se ingresa a la pagina de Formulario de agregar Costumer");
+    }
+
+    public void addinfo_Costumer(){
+
+
+
     }
 }
