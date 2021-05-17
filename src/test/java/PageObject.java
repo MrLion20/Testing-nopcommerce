@@ -124,14 +124,4 @@ public class PageObject extends BasePage {
         }
         test.pass("Se verifica y se ingresa a la pagina de Formulario de agregar Costumer");
     }
-
-    //Test Agregar informacion de Costumer
-
-    public void Form_Agregarinfo_Costumer(){
-
-
-
-    }
-
-
 }
