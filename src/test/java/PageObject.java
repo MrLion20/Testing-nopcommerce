@@ -5,6 +5,7 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
@@ -41,6 +42,7 @@ public class PageObject extends BasePage {
     By txt_company = By.id("Company");
     By CB_tax = By.id("IsTaxExempt");
     By select_newsletter = By.xpath("//*[@id=\"customer-info\"]/div[2]/div[9]/div[2]/div/div[1]/div");
+    By Option_Test2 = By.xpath("//*[@id=\"SelectedNewsletterSubscriptionStoreIds_listbox\"]/li[2]");
     By select_costumer_rol = By.xpath("//*[@id=\"customer-info\"]/div[2]/div[10]/div[2]/div/div[1]/div/div");
     By select_vender = By.id("VendorId");
     By CB_active = By.id("Active");
@@ -168,9 +170,28 @@ public class PageObject extends BasePage {
         }else{
             test.info("Ya esta Seleccionado sexo Masculino");
         }
-
+        type("2/20/1997", txt_calendar);
+        test.info("Se agrego la fecha de Nacimiento");
+        type("Grupo Babel", txt_company);
+        test.info("Se agrego la Compañia");
+        click(CB_tax);
+        test.info("Se selecciono el Checkbox de Tax");
+        click(CB_active);
+        test.info("Se selecciono el Checkbox de Tax");
+        click(select_newsletter);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        click(Option_Test2);
+        type("Activo", txt_adminContent);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }else{
         test.fail("No estamos en la Pagina correcta para ingresar un nuevo costumer");
     }
     }
+ public String seleccionVendor() {
+        //DropDownlist forma mas corta
+        Select selectvender = new Select(findElement(select_vender));
+        selectvender.selectByVisibleText("Vendor 1");
+        return getText(selectvender.getFirstSelectedOption());
+    }
+
 }
