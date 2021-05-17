@@ -4,6 +4,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
@@ -31,12 +32,10 @@ public class PageObject extends BasePage {
     By btnAddNew = By.xpath("/html/body/div[3]/div[1]/form[1]/div/div/a");
 
     //Pantalla del Formulario ADDCostumer
-    By Costumer_title = By.xpath("//*[@id=\"customer-info\"]/div[1]/div[1]/text()");
     By txt_costumer_email = By.id("Email");
     By txt_costumer_password = By.id("Password");
     By txt_costumer_FirstName = By.id("FirstName");
     By txt_costumer_LastName = By.id("LastName");
-    By RB_Male = By.id("Gender_Male");
     By RB_Female = By.id("Gender_Female");
     By txt_calendar = By.id("DateOfBirth");
     By txt_company = By.id("Company");
@@ -89,7 +88,7 @@ public class PageObject extends BasePage {
         ExtentTest test = extent.createTest("Iniciar Prueba Login");
         test.log(Status.INFO, "Se inicia la prueba Limpiar Espacios");
         clear(txt_email);
-        test.info("Se limpia espacion Email");
+        test.info("Se limpia espacio Email");
         clear(txt_password);
         test.info("Se Limpia espacio Password");
         test.pass("Se han limpiado correctamente los espacios");
@@ -113,12 +112,12 @@ public class PageObject extends BasePage {
         //Confirmar los Datos al ingresar y Precionar Boton para Confirmar Credenciales y ingresar al Sistema
         test.log(Status.INFO, "Se inicia la prueba del Boton de Login");
         click(btn_login);
-        test.pass("Se Se preciono el Boton de Login");
+        test.pass("Se preciono el Boton de Login");
 
         //Se confirma si existe el logo de la pagina Administrativa para conocer si ingresamos correctamente
         test.log(Status.INFO, "Se Confirma que hemos ingresado correctamente al sistema");
-        Assert.assertTrue(isDisplayed(logo), String.valueOf(test.fail("No se ingreso Correctamente a la pagina")));
-        test.pass("Se ingreso correctamente al Sistema");
+        Assert.assertTrue(isDisplayed(logo), String.valueOf(test.info("Se ingreso Correctamente a la pagina")));
+        test.pass("Ingreso Correcto");
     }
 
     //Test AddCostumer
@@ -146,12 +145,32 @@ public class PageObject extends BasePage {
     public void add_info_Costumer(){
         ExtentTest test = extent.createTest("Prueba Agregar Informacion de Costumer");
         test.info("Se inicia la verificacion si estamos en la pagina correcta");
-    if (isDisplayed(Costumer_title)){
+
+    if (isDisplayed(txt_costumer_email)){
+        type("justin.babel@grupobabel.com",txt_costumer_email);
+        test.info("Se agrega el correo correctamente");
+        type("prueba1234",txt_costumer_password);
+        test.info("Se agrega la contaseña correctamente");
+        type("Justin",txt_costumer_FirstName);
+        test.info("Se agrega el Nombre correctamente");
+        type("Leon Castro", txt_costumer_LastName);
+        click(RB_Female);
+        test.info("Se Selecciona seo femenino correctamente");
+        test.warning("Se selecciono el Femenino para ahora hacer la prueba de si no esta " +
+                "seleccionado el Masculino Seleccionarlo");
+
+        WebElement RB_Male = driver.findElement(By.id("Gender_Male"));
+        boolean isSelected = RB_Male.isSelected();
+        // performing click operation if element is not selected
+        if(!isSelected) {
+            RB_Male.click();
+            test.info("Se Selecciona sexo Masculino correctamente");
+        }else{
+            test.info("Ya esta Seleccionado sexo Masculino");
+        }
 
     }else{
         test.fail("No estamos en la Pagina correcta para ingresar un nuevo costumer");
     }
-
-
     }
 }
