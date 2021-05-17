@@ -4,6 +4,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
@@ -29,6 +30,22 @@ public class PageObject extends BasePage {
     By btnCostumers = By.xpath("/html/body/div[3]/aside/div/div[4]/div/div/nav/ul/li[4]/a");
     By btnCostumersPage = By.xpath("/html/body/div[3]/aside/div/div[4]/div/div/nav/ul/li[4]/ul/li[1]/a");
     By btnAddNew = By.xpath("/html/body/div[3]/div[1]/form[1]/div/div/a");
+
+    //Pantalla del Formulario ADDCostumer
+    By txt_costumer_email = By.id("Email");
+    By txt_costumer_password = By.id("Password");
+    By txt_costumer_FirstName = By.id("FirstName");
+    By txt_costumer_LastName = By.id("LastName");
+    By RB_Female = By.id("Gender_Female");
+    By txt_calendar = By.id("DateOfBirth");
+    By txt_company = By.id("Company");
+    By CB_tax = By.id("IsTaxExempt");
+    By select_newsletter = By.xpath("//*[@id=\"customer-info\"]/div[2]/div[9]/div[2]/div/div[1]/div");
+    By select_costumer_rol = By.xpath("//*[@id=\"customer-info\"]/div[2]/div[10]/div[2]/div/div[1]/div/div");
+    By select_vender = By.id("VendorId");
+    By CB_active = By.id("Active");
+    By txt_adminContent = By.id("AdminComment");
+    By btn_save = By.xpath("/html/body/div[3]/div[1]/form/div[1]/div/button[1]");
 
     //Implementacion de las acciones de Pruebas
     //Acciones Antes Pruebas
@@ -71,7 +88,7 @@ public class PageObject extends BasePage {
         ExtentTest test = extent.createTest("Iniciar Prueba Login");
         test.log(Status.INFO, "Se inicia la prueba Limpiar Espacios");
         clear(txt_email);
-        test.info("Se limpia espacion Email");
+        test.info("Se limpia espacio Email");
         clear(txt_password);
         test.info("Se Limpia espacio Password");
         test.pass("Se han limpiado correctamente los espacios");
@@ -95,15 +112,15 @@ public class PageObject extends BasePage {
         //Confirmar los Datos al ingresar y Precionar Boton para Confirmar Credenciales y ingresar al Sistema
         test.log(Status.INFO, "Se inicia la prueba del Boton de Login");
         click(btn_login);
-        test.pass("Se Se preciono el Boton de Login");
+        test.pass("Se preciono el Boton de Login");
 
         //Se confirma si existe el logo de la pagina Administrativa para conocer si ingresamos correctamente
         test.log(Status.INFO, "Se Confirma que hemos ingresado correctamente al sistema");
-        Assert.assertTrue(isDisplayed(logo), String.valueOf(test.fail("No se ingreso Correctamente a la pagina")));
-        test.pass("Se ingreso correctamente al Sistema");
+        Assert.assertTrue(isDisplayed(logo), String.valueOf(test.info("Se ingreso Correctamente a la pagina")));
+        test.pass("Ingreso Correcto");
     }
 
-    //Test Formulario AddCostumer
+    //Test AddCostumer
     public void Form_AddCostumer() {
         ExtentTest test = extent.createTest("Iniciar Prueba Ingresar a Formulario de Agregar Costumers");
 
@@ -116,12 +133,44 @@ public class PageObject extends BasePage {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         if (isDisplayed(btnAddNew)) {
             click(btnAddNew);
-            test.pass("Se Presiono el boton de agregar usuario para abrir el formlario de manera correcta");
+            test.pass("Se Presiono el boton de agregar usuario correctamente");
         } else {
             System.out.println("Boton de Agregar Cliente no disponible");
             test.fail("botton de AddCostumer no disponible");
 
         }
         test.pass("Se verifica y se ingresa a la pagina de Formulario de agregar Costumer");
+    }
+
+    public void add_info_Costumer(){
+        ExtentTest test = extent.createTest("Prueba Agregar Informacion de Costumer");
+        test.info("Se inicia la verificacion si estamos en la pagina correcta");
+
+    if (isDisplayed(txt_costumer_email)){
+        type("justin.babel@grupobabel.com",txt_costumer_email);
+        test.info("Se agrega el correo correctamente");
+        type("prueba1234",txt_costumer_password);
+        test.info("Se agrega la contaseña correctamente");
+        type("Justin",txt_costumer_FirstName);
+        test.info("Se agrega el Nombre correctamente");
+        type("Leon Castro", txt_costumer_LastName);
+        click(RB_Female);
+        test.info("Se Selecciona seo femenino correctamente");
+        test.warning("Se selecciono el Femenino para ahora hacer la prueba de si no esta " +
+                "seleccionado el Masculino Seleccionarlo");
+
+        WebElement RB_Male = driver.findElement(By.id("Gender_Male"));
+        boolean isSelected = RB_Male.isSelected();
+        // performing click operation if element is not selected
+        if(!isSelected) {
+            RB_Male.click();
+            test.info("Se Selecciona sexo Masculino correctamente");
+        }else{
+            test.info("Ya esta Seleccionado sexo Masculino");
+        }
+
+    }else{
+        test.fail("No estamos en la Pagina correcta para ingresar un nuevo costumer");
+    }
     }
 }
