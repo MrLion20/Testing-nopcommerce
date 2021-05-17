@@ -39,7 +39,6 @@ public class BasePage {
     public String getText(By locator) {
         return driver.findElement(locator).getText();
     }
-
     //Accion para verificar la disponibilidad de un elemento
 
     public boolean isDisplayed(By locator){
