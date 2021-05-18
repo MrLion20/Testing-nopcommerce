@@ -50,6 +50,7 @@ public class PageObject extends BasePage {
     By btn_save = By.xpath("/html/body/div[3]/div[1]/form/div[1]/div/button[1]");
 
     //Implementacion de las acciones de Pruebas
+
     //Acciones Antes Pruebas
     public void BeforeSuit() {
         extent = new ExtentReports();
