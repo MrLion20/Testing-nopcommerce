@@ -33,6 +33,7 @@ public class PageObject extends BasePage {
     By btnAddNew = By.xpath("/html/body/div[3]/div[1]/form[1]/div/div/a");
 
     //Pantalla del Formulario ADDCostumer
+    //Aca estan los elemnetos que se van a utilizar para realizar la prueba
     By txt_costumer_email = By.id("Email");
     By txt_costumer_password = By.id("Password");
     By txt_costumer_FirstName = By.id("FirstName");
