@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-
 <suite name="All Test Suite">
-
-    <!--    Aca se van a llamar la clase de listeners para los reportes-->
-    <!--    Aca se llaman los test que se van a realizar -->
     <test verbose="2" preserve-order="true" name="C:/Proyectos/Commerce_Page">
         <classes>
-            <class name="AddCostumer_Test">
-            </class>
+            <class name="AddCostumer_Test"></class>
         </classes>
     </test>
 </suite>
