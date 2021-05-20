@@ -3,7 +3,14 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="C:/Proyectos/Commerce_Page">
         <classes>
-            <class name="AddCostumer_Test"></class>
+            <class name="AddCostumer_Test">
+
+                <methods>
+
+                </methods>
+
+            </class>
+
         </classes>
     </test>
 </suite>
