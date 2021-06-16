@@ -26,13 +26,15 @@ public class AddCostumer_Test {
     @Test(priority = 2)
     public void Form_AddCostumer() throws InterruptedException {
         pageobject.Form_AddCostumer();
+        pageobject.add_info_Costumer();
+        pageobject.seleccionVendor();
     }
 
     @AfterSuite
     public void AfterSuite() {
-        pageobject.AfterSuit();
+       /* pageobject.AfterSuit();
         driver.manage().deleteAllCookies();
         driver.close();
-        driver.quit();
+        driver.quit();*/
     }
 }
